@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-service
+  labels:
+    app: product-api-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: product-api-service
+  template:
+    metadata:
+      labels:
+        app: product-api-service
+    spec:
+      containers:
+      - name: product-api-service
+        image: aniketphadatare/product-api-service
+        ports:
+        - containerPort: 80
+
