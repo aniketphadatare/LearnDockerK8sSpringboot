@@ -5,7 +5,7 @@ metadata:
   labels:
     app: product-api-service
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: product-api-service
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: product-api-service
-        image: aniketphadatare/product-api-service
+        image: aniketphadatare/product-api-service:0.0.1-SNAPSHOT
         ports:
         - containerPort: 8080
         env:
