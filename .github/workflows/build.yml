@@ -31,7 +31,7 @@ jobs:
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker push ${{ secrets.DOCKER_USERNAME }}/product-api-service
 
-   build-customer-api-service:
+  build-customer-api-service:
     name: Build customer-api-service
     runs-on: ubuntu-latest
     defaults:
