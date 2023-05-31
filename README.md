@@ -19,3 +19,7 @@ kubectl get svc --> To get running service and check IP and Port of the service
 
 Through this external IP and port we can access our app from the outside by using Postman or from webbrower.
 
+CI - Integration
+You can see the .github/workflow directory added into the repository which is having build.yml file which help us to build the project, create image and push to docker repository as soon as new pull request is created. 
+Secret for your docker you can add into your settings->Security->secret.
+
