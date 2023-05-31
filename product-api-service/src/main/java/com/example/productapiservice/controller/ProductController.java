@@ -37,6 +37,7 @@ public class ProductController {
     public Product getExperimentData(@PathVariable("id") Long id) {
         logger.info("Experiment test is called");
         return productService.getProducts(id);
+
     }
 
     @PostMapping("/Product")
