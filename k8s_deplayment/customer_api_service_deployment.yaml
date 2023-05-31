@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: product-service
+  name: customer-api-service
   labels:
-    app: product-api-service
+    app: customer-api-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: product-api-service
+      app: customer-api-service
   template:
     metadata:
       labels:
-        app: product-api-service
+        app: customer-api-service
     spec:
       containers:
-      - name: product-api-service
-        image: aniketphadatare/product-api-service
+      - name: customer-api-service
+        image: aniketphadatare/customer_api_service
         ports:
-        - containerPort: 8080
+        - containerPort: 8090
         env:
         - name: SPRING_PROFILES_ACTIVE
           value: "prod"    
@@ -37,4 +37,17 @@ spec:
                 -Xmx40m
                 -Xss256k
                 -XX:MaxRAM=150M
-
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: customer-api-service
+spec:
+  type: NodePort
+  ports:
+  - name: "customer-service"
+    port: 8090
+    targetPort: 8090
+  type: LoadBalancer
+  selector:
+    app: customer-api-service

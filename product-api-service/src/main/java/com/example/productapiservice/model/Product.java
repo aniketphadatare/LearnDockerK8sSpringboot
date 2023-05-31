@@ -8,12 +8,18 @@ public class Product {
 
     private String productName;
 
+    private String customerName;
+
     public void setId(long id) {
         this.id = id;
     }
 
     public void setProductName(String productName) {
         this.productName = productName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public long getId() {
@@ -24,7 +30,11 @@ public class Product {
         return productName;
     }
 
+    public String getCustomerName() {
+        return customerName;
+    }
+
     public String toString() {
-        return "id: "+ id +" version:" + version + " productName:"+productName;
+        return "id: "+ id +" version:" + version + " productName:"+productName + " customerName:"+customerName;
     }
 }
