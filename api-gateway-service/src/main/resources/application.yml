@@ -1,3 +1,10 @@
 debug : true
+spring:
+  application:
+    name: api-gateway-service
+  cloud:
+    loadbalancer:
+      ribbon:
+        enable: false
 server :
   port : 8092

@@ -5,7 +5,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@FeignClient(name = "product-api-service", url = "product-api-service:8080")
+@FeignClient(name = "product-api-service", url = "product-api-service:8082")
 public interface ProductService {
 
     @RequestMapping(value = "/Product", method = RequestMethod.POST)
