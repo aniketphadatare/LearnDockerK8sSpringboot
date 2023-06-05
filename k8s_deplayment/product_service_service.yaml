@@ -6,7 +6,7 @@ spec:
   type: NodePort
   ports:
   - name: "vote-service"
-    port: 8080
+    port: 8082
     targetPort: 8080
   type: LoadBalancer
   selector:

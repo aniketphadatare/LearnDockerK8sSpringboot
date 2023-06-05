@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway-service
+  labels:
+    app: api-gateway-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-gateway-service
+  template:
+    metadata:
+      labels:
+        app: api-gateway-service
+    spec:
+      containers:
+      - name: api-gateway-service
+        image: aniketphadatare/api-gateway-service
+        ports:
+        - containerPort: 8092
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: "prod"    
+        - name: BPL_JVM_HEAD_ROOM
+          value: "2"  
+        - name: BPL_JVM_LOADED_CLASS_COUNT
+          value: "35"  
+        - name: BPL_JVM_THREAD_COUNT
+          value: "10"  
+        - name: JAVA_OPTS
+          value: >-
+                -XX:ReservedCodeCacheSize=40M
+                -XX:MaxMetaspaceSize=60M
+                -Xlog:gc
+                -Xms34m
+                -Xmx40m
+                -Xss256k
+                -XX:MaxRAM=150M
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-gateway-service
+spec:
+  type: NodePort
+  ports:
+  - name: "api-gateway-service"
+    port: 8092
+    targetPort: 8092
+  type: LoadBalancer
+  selector:
+    app: api-gateway-service
