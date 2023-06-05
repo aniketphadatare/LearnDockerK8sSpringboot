@@ -11,5 +11,3 @@ spec:
   type: LoadBalancer
   selector:
     app: product-api-service
-  externalIPs:
-    - 3.0.99.166
