@@ -6,10 +6,7 @@ import com.example.apigatewayservice.serviceinterfaces.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ApiGWController {
@@ -23,7 +20,7 @@ public class ApiGWController {
     ProductService productService;
 
     @PostMapping("/v1/createProduct")
-    String createProduct(Product product){
+    String createProduct(@RequestBody Product product){
         logger.info("createProduct");
         return productService.createProduct(product);
     }
