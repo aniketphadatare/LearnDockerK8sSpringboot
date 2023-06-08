@@ -2,9 +2,28 @@ debug : true
 spring:
   application:
     name: api-gateway-service
-  cloud:
-    loadbalancer:
-      ribbon:
-        enable: false
+  codec:
+    log-request-details: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/login-app-keycloak
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+
+  jwt:
+    auth:
+      converter:
+        resource-id: login-app-keycloak-client
+        principal-attribute: preferred_username
+
 server :
   port : 8092
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+keycloak:
+  use-resource-role-mappings: false
