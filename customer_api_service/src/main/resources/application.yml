@@ -1,3 +1,12 @@
 debug : true
 server :
   port : 8090
+spring:
+  codec:
+    log-request-details: true
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
