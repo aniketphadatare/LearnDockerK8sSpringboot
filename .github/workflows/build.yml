@@ -107,7 +107,7 @@ jobs:
       - name : build the application
         run : |
             sudo apt-get update
-            npm install -g @angular/cli
+            npm install -g @angular/cli@8.3.1
             ng build --prod
 
       - if: ${{ github.ref == 'refs/heads/main' }}
