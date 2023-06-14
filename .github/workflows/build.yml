@@ -82,42 +82,5 @@ jobs:
           ./mvnw clean package spring-boot:build-image -DskipTests
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker push ${{ secrets.DOCKER_USERNAME }}/api-gateway-service
-    
-  build-product-app-ui:
-    name: Build product-app-ui
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./product_app_ui
-    strategy:
-      matrix:
-        node-version: [12.x]
-
-    steps:
-      - uses: actions/checkout@v1
-      - name: Cache node modules
-        uses: actions/cache@v1
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Node ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name : build the application
-        run : |
-            sudo apt-get update
-            npm install -g @angular/cli@8.3.1
-            npm install @angular-devkit/build-angular --force
-            ng build --prod
-
-      - if: ${{ github.ref == 'refs/heads/main' }}
-        name: Build and Publish Docker Image
-        run: |
-          ./docker build -t angular/product-app-ui .
-          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker push ${{ secrets.DOCKER_USERNAME }}/api-gateway-service
+  
 
