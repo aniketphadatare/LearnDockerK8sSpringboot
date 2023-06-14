@@ -86,6 +86,9 @@ jobs:
   build-product-app-ui:
     name: Build product-app-ui
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./product_app_ui
     strategy:
       matrix:
         node-version: [12.x]
