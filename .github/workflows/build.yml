@@ -111,6 +111,7 @@ jobs:
         run : |
             sudo apt-get update
             npm install -g @angular/cli@8.3.1
+            npm install @angular-devkit/build-angular --force
             ng build --prod
 
       - if: ${{ github.ref == 'refs/heads/main' }}
