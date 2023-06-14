@@ -107,7 +107,7 @@ jobs:
       - name : build the application
         run : |
             sudo apt-get update
-            npm install -g @angular/cli@6.2
+            npm install -g @angular/cli
             ng build --prod
 
       - if: ${{ github.ref == 'refs/heads/main' }}
